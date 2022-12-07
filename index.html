@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/style.css">
+        <title>Campo minato</title>
+    </head>
+    <body>
+        <header>
+            <div class="header-container">
+                <div class="row">
+                    <div class="col-sx flex">
+                        <div class="col-sx-logo">
+                            <img src="./original.png" alt="logo">
+                        </div>
+                        <div class="col-sx-title flex align-items">Campo Minato</div>
+                    </div>
+                    <div class="col-dx">
+                        <div class="row">
+                            <div>Difficoltà: </div>
+                            <select name="difficulty" id="difficulty">
+                                <option value="facile">facile</option>
+                                <option value="intermedio">intermedio</option>
+                                <option value="difficile">difficile</option>
+                            </select>
+                            <button id="btn">Play</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="flex align-items">
+            <div class="container">
+                <div id="grid" class="grid">
+                </div>
+            </div>
+        </main>
+        <footer class="flex align-items">
+            <div>Made with love by boolean</div>
+        </footer>
+        <script type="text/javascript" src="./js/script.js"></script>        
+    </body>
+</html>
