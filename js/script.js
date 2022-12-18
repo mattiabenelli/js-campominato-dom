@@ -9,14 +9,15 @@ function bombsArrayGenerator(min, max){
     let bombs = [];
     let i = 0;
     while(i < 16){
-        let number = Math.floor(Math.random() * (max - min + 1) + min);
-        if(bombs.includes(number)){
+        let number = Math.floor(Math.random() * (max - min + 1)) + min;
+        if(!bombs.includes(number)){
             bombs.push(number);
             i++;
         }
     }
     return bombs;
 }
+
 
 let grid = document.getElementById('grid');
 let start = document.getElementById('btn');
@@ -26,17 +27,24 @@ start.addEventListener('click',function(){
     document.querySelector('.grid').innerHTML = '';
     let mode = document.getElementById('difficulty').value
     console.log(mode)
+    
     if(mode == 'facile'){
+        arrayBombs = bombsArrayGenerator (1,100)
+        console.log(arrayBombs) 
+        
         for(let i=1; i<=100; i++){
-            
-            arrayBombs = bombsArrayGenerator (1,100)
-            console.log(arrayBombs)  
+
 
             const currentSquare = createGridSquare(i);
             grid.appendChild(currentSquare);
             
             currentSquare.addEventListener('click',function(){
                 this.classList.toggle('clicked');
+                if(arrayBombs.includes(parseInt(this.innerText))){
+                    this.classList.add('bomb');
+                    grid.classList.add('evenets-none');
+                    alert('hai preso una bomba')
+                }
                 console.log(this.innerText)
             })
         }
