@@ -22,6 +22,7 @@ function bombsArrayGenerator(min, max){
 let grid = document.getElementById('grid');
 let start = document.getElementById('btn');
 let arrayBombs = [];
+let goodCells = 0;
 
 start.addEventListener('click',function(){
     document.querySelector('.grid').innerHTML = '';
@@ -39,17 +40,29 @@ start.addEventListener('click',function(){
             grid.appendChild(currentSquare);
             
             currentSquare.addEventListener('click',function(){
-                this.classList.toggle('clicked');
+                this.classList.add('clicked');
+                goodCells++
                 if(arrayBombs.includes(parseInt(this.innerText))){
                     this.classList.add('bomb');
-                    grid.classList.add('evenets-none');
-                    alert('hai preso una bomba')
+                    grid.classList.add('events-none');
+                    goodCells--
+                    const cell = document.getElementsByClassName('square')
+                    for(let i=0; i<100; i++){
+                        let element = cell[i]
+                        if(arrayBombs.includes(parseInt(element.innerText))){
+                            element.classList.add('clicked')
+                            element.classList.add('bomb');
+                        }
+                    }
+                    alert(`hai preso la bomba ${this.innerText} e hai fatto un punteggio di ${goodCells} `) 
                 }
                 console.log(this.innerText)
             })
         }
     }
     else if(mode == 'intermedio'){
+        arrayBombs = bombsArrayGenerator (1,81)
+        console.log(arrayBombs) 
         for(let i=1; i<=81; i++){
 
             const currentSquare = createGridSquare(i);
@@ -57,12 +70,27 @@ start.addEventListener('click',function(){
             grid.appendChild(currentSquare);
             
             currentSquare.addEventListener('click',function(){
-                this.classList.toggle('clicked');
+                this.classList.add('clicked');
+                if(arrayBombs.includes(parseInt(this.innerText))){
+                    this.classList.add('bomb');
+                    grid.classList.add('events-none');
+                    const cell = document.getElementsByClassName('square')
+                    for(let i=0; i<100; i++){
+                        let element = cell[i]
+                        if(arrayBombs.includes(parseInt(element.innerText))){
+                            element.classList.add('clicked')
+                            element.classList.add('bomb');
+                        }
+                    }
+                    alert(`hai preso la bomba ${this.innerText} e hai fatto un punteggio di ${goodCells} `) 
+                }
                 console.log(this.innerText)
             })
         }
     }
     else if(mode == 'difficile'){
+        arrayBombs = bombsArrayGenerator (1,49)
+        console.log(arrayBombs) 
         for(let i=1; i<=49; i++){
 
             const currentSquare = createGridSquare(i);
@@ -70,7 +98,20 @@ start.addEventListener('click',function(){
             grid.appendChild(currentSquare);
             
             currentSquare.addEventListener('click',function(){
-                this.classList.toggle('clicked');
+                this.classList.add('clicked');
+                if(arrayBombs.includes(parseInt(this.innerText))){
+                    this.classList.add('bomb');
+                    grid.classList.add('events-none');
+                    const cell = document.getElementsByClassName('square')
+                    for(let i=0; i<100; i++){
+                        let element = cell[i]
+                        if(arrayBombs.includes(parseInt(element.innerText))){
+                            element.classList.add('clicked')
+                            element.classList.add('bomb');
+                        }
+                    }
+                    alert(`hai preso la bomba ${this.innerText} e hai fatto un punteggio di ${goodCells} `) 
+                }
                 console.log(this.innerText)
             })
         }

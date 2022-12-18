@@ -87,3 +87,11 @@ footer{
     width: calc(100% / 7);
     height: calc(100% / 7);
 }
+/* bombe */
+.events-none{
+    pointer-events: none;
+}
+.bomb{
+    background-image: url("../img/_97650587_030795555-1.jpg");
+    background-size: cover;
+}
